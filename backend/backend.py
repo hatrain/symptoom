@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
+#test
+
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///symptom.db'
@@ -69,9 +71,44 @@ def add_symptom_episode():
     else:
         return jsonify({'message': 'User not found'})
 
-#method for deletign a symptom episode
+@app.route('/api/delete', methods=['DELETE'])
+def delete_symptom_episode():
+    username = request.json.get('username')
+    episode_id = request.json.get('episode_id')
+    user = User.query.filter_by(username=username).first()
+    if user:
+        symptom_episode = SymptomEpisode.query.filter_by(user_id=user.id, id=episode_id).first()
+        if symptom_episode:
+            db.session.delete(symptom_episode)
+            db.session.commit()
+            return jsonify({'message': 'Symptom episode deleted'})
+        else:
+            return jsonify({'message': 'Symptom episode not found'})
+    else:
+        return jsonify({'message': 'User not found'})
 
-#method for updating a symptom episode
+@app.route('/api/update', methods=['PUT'])
+def update_symptom_episode():
+    username = request.json.get('username')
+    episode_id = request.json.get('episode_id')
+    date = request.json.get('date')
+    symptom = request.json.get('symptom')
+    notes = request.json.get('notes')
+    severity = request.json.get('severity')
+    user = User.query.filter_by(username=username).first()
+    if user:
+        symptom_episode = SymptomEpisode.query.filter_by(user_id=user.id, id=episode_id).first()
+        if symptom_episode:
+            symptom_episode.date = date
+            symptom_episode.symptom = symptom
+            symptom_episode.notes = notes
+            symptom_episode.severity = severity
+            db.session.commit()
+            return jsonify({'message': 'Symptom episode updated'})
+        else:
+            return jsonify({'message': 'Symptom episode not found'})
+    else:
+        return jsonify({'message': 'User not found'})
 
 @app.route('/api/fullchart', methods=['GET'])
 def get_all_symptom_episodes():
