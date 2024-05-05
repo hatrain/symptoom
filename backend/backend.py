@@ -11,7 +11,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
     password = db.Column(db.String(50), nullable=False)
-
+    email = db.Column(db.String(50), unique=True, nullable=False)
 class SymptomEpisode(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
@@ -19,6 +19,16 @@ class SymptomEpisode(db.Model):
     symptom = db.Column(db.String(50), nullable=False)
     notes = db.Column(db.Text)
     severity = db.Column(db.Integer, nullable=False)
+
+@app.route('/api/createuser', methods=['POST'])
+def create_user():
+    username = request.json.get('username')
+    password = request.json.get('password')
+    email = request.json.get('email')
+    user = User(username=username, password=password, email=email)
+    db.session.add(user)
+    db.session.commit()
+    return jsonify({'message': 'User created'})
 
 @app.route('/api/authenticate', methods=['POST'])
 def authenticate():
