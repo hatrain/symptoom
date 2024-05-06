@@ -3,7 +3,7 @@ import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import httpClient from "@/components/httpclient";
+import httpClient from "@/src/httpclient";
 import { User } from '@/interfaces/user';
 
 export default function Home() {
