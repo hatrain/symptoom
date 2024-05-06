@@ -24,7 +24,7 @@ class SymptomEpisode(db.Model):
 def get_api_status():
     return jsonify({'status': 'API is running'})
 
-#add human verification for creating user
+#TODO: add human verification for creating user
 @app.route('/api/createuser', methods=['POST'])
 def create_user():
     username = request.json.get('username')
@@ -37,8 +37,8 @@ def create_user():
 
 @app.route('/api/authenticate', methods=['POST'])
 def authenticate():
-    #add real authentication with hashing
-    #also return session token for future requests
+    #TODO: rewrite this to use flask-login
+    #TODO: return session token for future requests
     username = request.json.get('username')
     password = request.json.get('password')
     user = User.query.filter_by(username=username, password=password).first()
@@ -50,7 +50,7 @@ def authenticate():
 #only authenticated users should be able to access this method
 @app.route('/api/user', methods=['GET'])
 def get_user_data():
-    #add element for email
+    #TODO: add variables and logic for email
     username = request.args.get('username')
     user = User.query.filter_by(username=username).first()
     if user:
@@ -58,9 +58,10 @@ def get_user_data():
     else:
         return jsonify({'message': 'User not found'})
 
+#only authenticated users should be able to access this method
 @app.route('/api/password', methods=['PUT'])
 def update_user_password():
-    #rewrite method to use hashing
+    #TODO: make sure the data is hashed before proceeding
     username = request.json.get('username')
     new_password = request.json.get('new_password')
     user = User.query.filter_by(username=username).first()
@@ -71,6 +72,7 @@ def update_user_password():
     else:
         return jsonify({'message': 'User not found'})
 
+#only authenticated users should be able to access this method
 @app.route('/api/add', methods=['POST'])
 def add_symptom_episode():
     username = request.json.get('username')
