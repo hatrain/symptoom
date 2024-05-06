@@ -20,8 +20,15 @@ class SymptomEpisode(db.Model):
     notes = db.Column(db.Text)
     severity = db.Column(db.Integer, nullable=False)
 
+@app.route('/api/status', methods=['GET'])
+def get_api_status():
+    return jsonify({'status': 'API is running'})
+
 @app.route('/api/createuser', methods=['POST'])
 def create_user():
+    #can remove this if needed, dummy request to test
+    if request.method == 'POST':
+        dummy = request.form
     username = request.json.get('username')
     password = request.json.get('password')
     email = request.json.get('email')
