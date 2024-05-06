@@ -2,5 +2,6 @@
 
 #ignore db current instance
 instance/ 
+__pycache__/
 
 #ignore db backup files
