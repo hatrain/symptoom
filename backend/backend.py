@@ -24,11 +24,9 @@ class SymptomEpisode(db.Model):
 def get_api_status():
     return jsonify({'status': 'API is running'})
 
+#add human verification for creating user
 @app.route('/api/createuser', methods=['POST'])
 def create_user():
-    #can remove this if needed, dummy request to test
-    if request.method == 'POST':
-        dummy = request.form
     username = request.json.get('username')
     password = request.json.get('password')
     email = request.json.get('email')
@@ -39,6 +37,8 @@ def create_user():
 
 @app.route('/api/authenticate', methods=['POST'])
 def authenticate():
+    #add real authentication with hashing
+    #also return session token for future requests
     username = request.json.get('username')
     password = request.json.get('password')
     user = User.query.filter_by(username=username, password=password).first()
@@ -47,9 +47,10 @@ def authenticate():
     else:
         return jsonify({'message': 'Authentication failed'})
 
+#only authenticated users should be able to access this method
 @app.route('/api/user', methods=['GET'])
 def get_user_data():
-
+    #add element for email
     username = request.args.get('username')
     user = User.query.filter_by(username=username).first()
     if user:
@@ -59,6 +60,7 @@ def get_user_data():
 
 @app.route('/api/password', methods=['PUT'])
 def update_user_password():
+    #rewrite method to use hashing
     username = request.json.get('username')
     new_password = request.json.get('new_password')
     user = User.query.filter_by(username=username).first()
@@ -85,6 +87,7 @@ def add_symptom_episode():
     else:
         return jsonify({'message': 'User not found'})
 
+#only authenticated users should be able to access this method
 @app.route('/api/delete', methods=['DELETE'])
 def delete_symptom_episode():
     username = request.json.get('username')
@@ -101,6 +104,7 @@ def delete_symptom_episode():
     else:
         return jsonify({'message': 'User not found'})
 
+#only authenticated users should be able to access this method
 @app.route('/api/update', methods=['PUT'])
 def update_symptom_episode():
     username = request.json.get('username')
@@ -124,6 +128,7 @@ def update_symptom_episode():
     else:
         return jsonify({'message': 'User not found'})
 
+#only authenticated users should be able to access this method
 @app.route('/api/fullchart', methods=['GET'])
 def get_all_symptom_episodes():
     username = request.args.get('username')
@@ -135,6 +140,7 @@ def get_all_symptom_episodes():
     else:
         return jsonify({'message': 'User not found'})
 
+#only authenticated users should be able to access this method
 @app.route('/api/search/range', methods=['GET'])
 def get_symptom_episodes_in_range():
     username = request.args.get('username')
@@ -148,6 +154,7 @@ def get_symptom_episodes_in_range():
     else:
         return jsonify({'message': 'User not found'})
 
+#only authenticated users should be able to access this method
 @app.route('/api/search/notes', methods=['GET'])
 def get_symptom_episodes_by_notes():
     username = request.args.get('username')
@@ -160,6 +167,7 @@ def get_symptom_episodes_by_notes():
     else:
         return jsonify({'message': 'User not found'})
 
+#only authenticated users should be able to access this method
 @app.route('/api/search/severity', methods=['GET'])
 def get_symptom_episodes_by_severity():
     username = request.args.get('username')
