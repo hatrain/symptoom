@@ -2,6 +2,7 @@
 
 #TODO: 1. create a basic flask app with authentication from a tutorial; use sqlalchemy and flask-login.
 #this one looks good https://www.digitalocean.com/community/tutorials/how-to-add-authentication-to-your-app-with-flask-login
+#left off at step 7
 
 #TODO: 2. add customization to the program to fit our needs
 #only authenticated users should be able to access these methods
