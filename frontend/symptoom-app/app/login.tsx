@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import React, { useState } from 'react';
 import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
-import { useNavigation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function LoginScreen() {
@@ -11,8 +11,10 @@ export default function LoginScreen() {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
   
+    //TODO: fix navigation so that it works
     //might need some navigation
     //const navigate = useNavigation();
+    //const navigate = useNavigate();
   
     const validateForm = () => {
       if (!username || !password) {
@@ -48,6 +50,7 @@ export default function LoginScreen() {
           const data = await response.json();
           localStorage.setItem('token', data.access_token);
           //we need to send the user back to the tabs / home screen
+          //navigate('(tabs)');
         } else {
           const errorData = await response.json();
           setError(errorData.detail || 'Authentication failed!');
