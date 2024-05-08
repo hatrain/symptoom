@@ -42,13 +42,14 @@ SECRET_KEY = "test-key"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
-
+#TODO: modify to include extra fields
 class UserCreate(BaseModel):
     username: str
     email: str
     name: str
     password: str
 
+#TODO: modify to include extra fields
 class SymptomCreate(BaseModel):
     date: datetime
     severity: int
@@ -66,6 +67,7 @@ def create_user(db: Session, user: UserCreate):
     db.commit()
     return "complete"
 
+#TODO: modify to include extra fields
 @app.post("/register")
 def register_user(user: UserCreate, db: Session = Depends(get_db)):
     db_user = get_user_by_username(db, username=user.username)
@@ -139,6 +141,7 @@ async def verify_user_token(token: str):
 @app.post("/create-symptom-episode/{token}")
 def create_symptom_episode(token: str, symptom_episode: SymptomCreate, db: Session = Depends(get_db)):
     user = get_current_user_from_token(token=token, db=db)
+    #TODO: modify to include extra fields
     if user:
         db_symptom_episode = SymptomEpisode(user_id=user.id, 
                                             date=symptom_episode.date, 
