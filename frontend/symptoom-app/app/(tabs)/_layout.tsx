@@ -48,12 +48,12 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="export"
+        name="view"
         options={{
-          title: 'Export',
-          tabBarIcon: ({ color }) => <TabBarIcon name="share-square-o" color={color} />,
+          title: 'View',
+          tabBarIcon: ({ color }) => <TabBarIcon name="eye" color={color} />,
         }}
-      />
+        />
       <Tabs.Screen
         name="delete"
         options={{
@@ -62,12 +62,12 @@ export default function TabLayout() {
         }}
         />
       <Tabs.Screen
-        name="edit"
+        name="export"
         options={{
-          title: 'Edit',
-          tabBarIcon: ({ color }) => <TabBarIcon name="edit" color={color} />,
+          title: 'Export',
+          tabBarIcon: ({ color }) => <TabBarIcon name="share-square-o" color={color} />,
         }}
-        />
+      />
       <Tabs.Screen
         name="analyze"
         options={{
