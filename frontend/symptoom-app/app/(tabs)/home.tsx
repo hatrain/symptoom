@@ -5,6 +5,10 @@ import verifyAuth from '../auth';
 
 
 export default function Home() {
+  useEffect(() => {
+    verifyAuth();
+  }, []);
+  
   
   return (
     

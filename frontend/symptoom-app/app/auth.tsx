@@ -1,12 +1,12 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { router } from 'expo-router';
 
 const verifyAuth = async() =>{
     let token = await AsyncStorage.getItem('token');
       console.log(token);
 
       if (!token) {
-        //the following line causes an infinite loop
-        //window.location.href = '/login';
+        router.replace('/login');
         return;
       }
       

@@ -1,7 +1,12 @@
 import { StyleSheet } from 'react-native';
 import { Text, View } from '@/components/Themed';
+import { useEffect } from 'react';
+import verifyAuth from '../auth';
 
 export default function TabTwoScreen() {
+  useEffect(() => {
+    verifyAuth();
+  }, []);
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Export Screen</Text>

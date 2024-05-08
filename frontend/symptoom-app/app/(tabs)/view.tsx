@@ -2,8 +2,13 @@ import { StyleSheet } from 'react-native';
 
 import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
+import { useEffect } from 'react';
+import verifyAuth from '../auth';
 
 export default function ViewScreen() {
+  useEffect(() => {
+    verifyAuth();
+  }, []);
   return (
     <View style={styles.container}>
       <Text style={styles.title}>View Screen</Text>

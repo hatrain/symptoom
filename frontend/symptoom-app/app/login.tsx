@@ -9,12 +9,7 @@ export default function LoginScreen() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-  
-    //TODO: fix navigation so that it works
-    //might need some navigation
-    //const navigate = useNavigation();
-    //const navigate = useNavigate();
-  
+
     const validateForm = () => {
       if (!username || !password) {
         setError('Username and password are required');
