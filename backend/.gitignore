@@ -1,4 +1,5 @@
-#ignore db current instance
-auth/ 
-instance/
-project/__pycache__/
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+__pycache__/
+test-symptooms.db
+.DS_Store
