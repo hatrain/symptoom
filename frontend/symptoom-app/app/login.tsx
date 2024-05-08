@@ -1,8 +1,7 @@
 import { StyleSheet } from 'react-native';
 import React, { useState } from 'react';
-import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
-import { useNavigate } from 'react-router-dom';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export default function LoginScreen() {
@@ -48,9 +47,8 @@ export default function LoginScreen() {
   
         if (response.ok) {
           const data = await response.json();
-          localStorage.setItem('token', data.access_token);
-          //we need to send the user back to the tabs / home screen
-          //navigate('(tabs)');
+          AsyncStorage.setItem('token', data.access_token);
+          window.location.href = '/';
         } else {
           const errorData = await response.json();
           setError(errorData.detail || 'Authentication failed!');

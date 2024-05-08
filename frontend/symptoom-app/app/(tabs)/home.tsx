@@ -1,8 +1,11 @@
 import { StyleSheet, Button } from 'react-native';
 import { Text, View } from '@/components/Themed';
+import { useEffect } from 'react';
+import verifyAuth from '../auth';
 
 
 export default function Home() {
+  
   return (
     
     <View style={styles.container}>
