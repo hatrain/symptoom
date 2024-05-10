@@ -1,10 +1,36 @@
+from datetime import datetime
+from typing import Optional
+from pydantic import BaseModel
 from sqlalchemy import Column, ForeignKey, Integer, String
 from database import Base
 from database import engine
 from sqlalchemy import Column, Integer, String, Date
 from sqlalchemy.orm import relationship
-from database import Base
 from database import engine
+
+#TODO: modify to include extra fields
+class UserCreate(BaseModel):
+    username: str
+    email: str
+    name: str
+    password: str
+    family_history: Optional[str] = None
+    medications: Optional[str] = None
+    phone_number: Optional[str] = None
+
+#TODO: modify to include extra fields
+class SymptomCreate(BaseModel):
+    date: datetime
+    severity: int
+    notes: str
+    mood: str
+    weather: str
+    food_eaten: Optional[str] = None
+    medications_before: Optional[str] = None
+    medications_after: Optional[str] = None
+    activities: Optional[str] = None
+    work_day: Optional[str] = None
+    sleep_rating: Optional[int] = None
 
 class User(Base):
     __tablename__ = "users"
@@ -16,6 +42,7 @@ class User(Base):
     hashed_password = Column(String)
     family_history = Column(String)  # column for family history of symptoms or conditions
     medications = Column(String)  # column for medications the user is currently taking
+    phone_number = Column(String)  # column for phone number of the user
     episodes = relationship("SymptomEpisode", back_populates="user")
 
 class SymptomEpisode(Base):
