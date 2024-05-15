@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import verifyAuth from '../auth';
 
 export default function DeleteScreen() {
+  //TODO: Add the ability to delete items
   useEffect(() => {
     verifyAuth();
   }, []);

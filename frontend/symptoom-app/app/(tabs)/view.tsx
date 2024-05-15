@@ -7,6 +7,7 @@ import verifyAuth from '../auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function ViewScreen() {
+  //TODO: Add the ability to edit items in the list
   //state to store our token from local storage
   const [token, setToken] = useState<string | null>(null);
 

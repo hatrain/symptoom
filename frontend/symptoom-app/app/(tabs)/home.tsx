@@ -8,6 +8,7 @@ import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/dat
 
 
 export default function Home() {
+  //TODO: Add/test the ability to add new items
   //state to store our token from local storage
   const [token, setToken] = useState<string | null>(null);
 
