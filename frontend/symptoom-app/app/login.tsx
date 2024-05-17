@@ -74,30 +74,36 @@ export default function LoginScreen() {
 
 return (
     <View style={styles.container}>
-        <div>
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label>Username:</label>
-                <input
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-            </div>
-            <div>
-                <label>Password:</label>
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-            </div>
-            <button type="submit" disabled={loading}>
-                {loading ? 'Logging in...' : 'Login'}
-            </button>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-        </form>
-    </div>
+      <Text>Username:</Text>
+      <Text>Password:</Text>  
     <Text style={styles.title}>Login Screen</Text>
 </View>
 )};
+
+
+// saved code
+{/* <input
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                /> */}
+{/* <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                /> */}
+
+{/* <button type="submit" disabled={loading}>
+                {loading ? 'Logging in...' : 'Login'}
+            </button> */}
+
+    //         <div>
+    //     <form onSubmit={handleSubmit}>
+            
+                
+                
+            
+            
+    //         {error && <p style={{ color: 'red' }}>{error}</p>}
+    //     </form>
+    // </div>
