@@ -1,0 +1,7 @@
+1. remove "delete" screen
+2. change "view" screen to "manage"
+3. add "logout" function to profile section
+4. add "Edit" and "delete" buttons for each symptom entry
+5. add "coming soon" to the "analyze" section
+6. Fix initial double-load glitch
+7. add pagination to "view" screen
