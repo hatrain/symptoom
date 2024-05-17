@@ -1,10 +1,9 @@
 import { FlatList, StyleSheet } from 'react-native';
-
-import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
 import { useEffect, useState } from 'react';
 import verifyAuth from '../auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import SERVER_URL from '../statics';
 
 export default function ViewScreen() {
   //TODO: Add the ability to edit items in the list
@@ -19,7 +18,8 @@ export default function ViewScreen() {
     AsyncStorage.getItem('token').then(value => {
       setToken(value);
       if (value) {
-        fetch('http://127.0.0.1:8000/all-symptom-episodes/' + value, {
+        let requestString = SERVER_URL + '/all-symptom-episodes/';
+        fetch(requestString + value, {
           method: 'GET',
           headers: {
             'Accept': 'application/json',

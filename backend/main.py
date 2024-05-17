@@ -10,12 +10,21 @@ from database import SessionLocal, engine
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import auth, user, symptom
+from fastapi import Request
+import logging
 
 app = FastAPI()
 
 app.include_router(auth.router)
 app.include_router(user.router)
 app.include_router(symptom.router)
+
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    body = await request.body()
+    logging.info(body.decode())
+    response = await call_next(request)
+    return response
 
 
 
@@ -33,3 +42,5 @@ app.add_middleware(
     allow_methods=["*"],  # Allows all methods
     allow_headers=["*"],  # Allows all headers
 )
+
+logging.basicConfig(level=logging.INFO)

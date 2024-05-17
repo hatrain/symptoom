@@ -5,6 +5,7 @@ import verifyAuth from '../auth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
+import SERVER_URL from '../statics';
 
 
 export default function Home() {
@@ -56,12 +57,23 @@ export default function Home() {
   }, []);
 
   const handleChange = (name: any, value: any) => {
-    setFormData(prevState => ({ ...prevState, [name]: value }));
+    let parsedValue = value;
+    
+    if (name === 'severity' || name === 'sleep_rating') {
+      parsedValue = parseInt(value);
+    } else if (name === 'work_day') {
+      parsedValue = value.toLowerCase() === 'true';
+    }
+
+    setFormData(prevState => ({ ...prevState, [name]: parsedValue }));
   };
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post(`http://127.0.0.1:8000/create-symptom-episode/${token}`, [formData]);
+      let requestString = `${SERVER_URL}/create-symptom-episode/${token}`;
+
+      const response = await axios.post(requestString, formData);
+
       console.log(response.data);
     } catch (error) {
       console.error(error);
