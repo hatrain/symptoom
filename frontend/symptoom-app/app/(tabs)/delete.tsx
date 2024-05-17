@@ -4,8 +4,10 @@ import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
 import { useEffect } from 'react';
 import verifyAuth from '../auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function DeleteScreen() {
+  AsyncStorage.removeItem('token');
   //TODO: Add the ability to delete items
   useEffect(() => {
     verifyAuth();

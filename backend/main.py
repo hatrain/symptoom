@@ -23,6 +23,7 @@ origins = [
     "http://localhost:8081",  # Adjust the port if your frontend runs on a different one
     "http://127.0.0.1:8081",  # Adjust the port if your frontend runs on a different one
     "https://yourfrontenddomain.com",
+    "http://192.168.50.207"
 ]
 
 app.add_middleware(

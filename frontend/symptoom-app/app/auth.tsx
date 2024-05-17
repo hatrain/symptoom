@@ -1,5 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router } from 'expo-router';
+import SERVER_URL from './statics';
 
 const verifyAuth = async() =>{
     let token = await AsyncStorage.getItem('token');
@@ -11,7 +12,8 @@ const verifyAuth = async() =>{
       }
       
       try {
-        const response = await fetch(`http://localhost:8000/verify-token/${token}`);
+        const requestString = SERVER_URL + '/verify-token/' + token;
+        const response = await fetch(requestString);
 
         if (!response.ok) {
           throw new Error('Token verification failed');
