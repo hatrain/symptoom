@@ -5,10 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect } from 'react';
 import verifyAuth from './auth';
 
-export default function ProfileScreen() {
-  useEffect(() => {
-    AsyncStorage.removeItem('token');
-  }, []);
+export default function EditScreen() {
   useEffect(() => {
     verifyAuth();
   }, []);

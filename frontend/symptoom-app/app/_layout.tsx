@@ -4,8 +4,6 @@ import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
-import verifyAuth from './auth';
-
 import { useColorScheme } from '@/components/useColorScheme';
 
 export {
@@ -56,6 +54,7 @@ function RootLayoutNav() {
         <Stack.Screen name="login" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="profile" options={{ presentation: 'modal' }} />
+        <Stack.Screen name="edit" options={{ presentation: 'modal' }} />
       </Stack>
     </ThemeProvider>
   );

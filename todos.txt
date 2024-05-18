@@ -1,4 +1,3 @@
-1. remove "delete" screen
 2. change "view" screen to "manage"
 3. add "logout" function to profile section
 4. add "Edit" and "delete" buttons for each symptom entry
