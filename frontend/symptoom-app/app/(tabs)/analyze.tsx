@@ -1,6 +1,4 @@
 import { StyleSheet } from 'react-native';
-
-import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
 import { useEffect } from 'react';
 import verifyAuth from '../auth';
@@ -11,7 +9,7 @@ export default function AnalyzeScreen() {
   }, []);
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Analyze Screen</Text>
+      <Text style={styles.title}>Analyze Screen... AI analysis of symptoms coming soon!</Text>
     </View>
   );
 }

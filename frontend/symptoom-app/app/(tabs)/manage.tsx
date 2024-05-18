@@ -124,16 +124,17 @@ export default function ManageScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    width: '100%', 
     justifyContent: 'center',
   },
   item: {
     padding: 10,
     marginVertical: 8,
-    marginHorizontal: 16,
+    marginHorizontal: 0, 
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 5,
+    width: '100%', 
   },
   title: {
     fontSize: 20,

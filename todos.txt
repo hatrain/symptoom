@@ -1,6 +1,9 @@
-2. change "view" screen to "manage"
-3. add "logout" function to profile section
-4. add "Edit" and "delete" buttons for each symptom entry
-5. add "coming soon" to the "analyze" section
-6. Fix initial double-load glitch
-7. add pagination to "view" screen
+1. add "Edit" each symptom entry
+2. add pagination to "view" screen
+3. build backend call for getting profile data
+4. fill out profile screen to display profile data
+5. convert temp logout function to logout button with "are you sure" alert
+6. Add "register" page to the app
+7. add 2 factor auth via TOTP or DUO or EMAIL
+8. add ability for Google / Apple SSO
+9. Begin brainstorming "export" page

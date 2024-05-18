@@ -9,7 +9,7 @@ export default function TabTwoScreen() {
   }, []);
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Export Screen</Text>
+      <Text style={styles.title}>Export Screen... exporting of data coming soon!</Text>
     </View>
   );
 }
