@@ -1,4 +1,4 @@
-1. add "Edit" each symptom entry
+1. add "Edit" each symptom entry (in progress, var is now being passed between screens. need to mimic home submit page for edit next)
 2. add pagination to "view" screen
 3. build backend call for getting profile data
 4. fill out profile screen to display profile data
