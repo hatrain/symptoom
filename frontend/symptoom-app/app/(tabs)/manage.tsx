@@ -112,7 +112,7 @@ export default function ManageScreen() {
             <Text>Activities: {item.activities}</Text>
             <Text>Work Day: {item.work_day}</Text>
             <Text>Sleep Rating: {item.sleep_rating}</Text>
-            <Button title="Edit" onPress={() => router.replace('/edit')} />
+            <Button title="Edit" onPress={() => router.push('/edit')} />
             <Button title="Delete" onPress={() => deleteItem(item.id)} />
           </View>
         )}
