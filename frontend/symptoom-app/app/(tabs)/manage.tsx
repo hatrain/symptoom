@@ -92,6 +92,16 @@ export default function ManageScreen() {
         ]
       );
     };
+
+
+    const editItem = async (id: string) => {
+      try {
+        await AsyncStorage.setItem('currentSymptomID', id.toString());
+        router.push('/edit');
+      } catch (error) {
+        console.error(error);
+      }
+      };
   
 
   return (
@@ -112,7 +122,7 @@ export default function ManageScreen() {
             <Text>Activities: {item.activities}</Text>
             <Text>Work Day: {item.work_day}</Text>
             <Text>Sleep Rating: {item.sleep_rating}</Text>
-            <Button title="Edit" onPress={() => router.push('/edit')} />
+            <Button title="Edit" onPress={() => editItem(item.id)} />
             <Button title="Delete" onPress={() => deleteItem(item.id)} />
           </View>
         )}
